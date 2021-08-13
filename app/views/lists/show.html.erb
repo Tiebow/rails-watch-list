@@ -1,17 +1,16 @@
 <div class="container">
   <h1 class="mt-5 mb-4"><%= @list.name %></h1>
   <hr class="mb-4">
-  <ul>
+  <div class="cards">
     <% @list.bookmarks.each do |mov| %>
-      <li>
-        <strong><%= mov.movie.title %></strong><br>
-        <%= image_tag mov.movie.poster_url, width: 300 %><br>
-        <%= mov.movie.overview %><br>
-        <strong>Comment</strong> : <%= mov.comment %><br>
+      <div class="card-category" id="card-movie" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= mov.movie.poster_url %>)">
+        <h3><strong><%= mov.movie.title %></strong></h3>
+        <p><%= mov.movie.overview %></p>
+        <p><strong>Comment</strong> : <%= mov.comment %></p>
         <%= link_to 'Delete', bookmark_path(mov), method: :delete %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
   <%= link_to 'Add a movie to your list', new_list_bookmark_path(@list) %>
   <%= link_to 'Back', lists_path %>
 </div>

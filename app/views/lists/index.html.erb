@@ -5,10 +5,14 @@
     <%= link_to 'Create a list', new_list_path, class: "btn btn-flat" %>
   </div>
 </div>
-<div class="cards">
+<div class="cards mt-4 ml-5 mr-5">
   <% @lists.each do |item| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <%= link_to item.name, list_path(item), class: "text-light" %>
-    </div>
+    <%= link_to list_path(item) do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= item.photo.attached? ? (cl_image_path item.photo.key, height: 180, crop: :fill) : 'https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80' %>')">
+        <div class="text-light">
+          <%= item.name %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
