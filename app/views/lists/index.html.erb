@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="mt-5 mb-4">My lists</h1>
+  <hr class="mb-4">
+  <div class="mb-3">
+    <%= link_to 'Create a list', new_list_path %>
+  </div>
+  <ul>
+    <% @lists.each do |item| %>
+      <li class="mb-2"><%= link_to item.name, list_path(item) %></li>
+    <% end %>
+  </ul>
+</div>

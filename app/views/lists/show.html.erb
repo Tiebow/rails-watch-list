@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="mt-5 mb-4"><%= @list.name %></h1>
+  <hr class="mb-4">
+  <ul>
+    <% @list.bookmarks.each do |mov| %>
+      <li>
+        <strong><%= mov.movie.title %></strong><br>
+        <%= image_tag mov.movie.poster_url, width: 300 %><br>
+        <%= mov.movie.overview %><br>
+        <strong>Comment</strong> : <%= mov.comment %><br>
+        <%= link_to 'Delete', bookmark_path(mov), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Add a movie to your list', new_list_bookmark_path(@list) %>
+  <%= link_to 'Back', lists_path %>
+</div>
